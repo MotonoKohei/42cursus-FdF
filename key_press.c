@@ -6,7 +6,7 @@
 /*   By: kmotono <kmotono@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:01:16 by kmotono           #+#    #+#             */
-/*   Updated: 2024/11/20 10:15:30 by kmotono          ###   ########.fr       */
+/*   Updated: 2024/11/20 10:25:55 by kmotono          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ int	key_press(int keycode, t_vars *vars)
 {
 	if (keycode == 65307)
 	{
-		mlx_destroy_window(vars->mlx, vars->mlx_win);
-		exit(0);
+		close_window(vars);
 	}
 	if (keycode == 32)
 	{

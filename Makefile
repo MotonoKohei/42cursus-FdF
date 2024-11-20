@@ -6,7 +6,7 @@
 #    By: kmotono <kmotono@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/15 07:27:23 by kmotono           #+#    #+#              #
-#    Updated: 2024/11/20 10:02:21 by kmotono          ###   ########.fr        #
+#    Updated: 2024/11/20 10:23:42 by kmotono          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC 				:= \
 		init.c \
 		initialize_window_and_image.c \
 		window_utils.c \
+		close_window.c \
 		set_hooks.c \
 		render.c \
 		transform.c \

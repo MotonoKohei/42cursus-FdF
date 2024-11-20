@@ -6,7 +6,7 @@
 /*   By: kmotono <kmotono@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:28:24 by kmotono           #+#    #+#             */
-/*   Updated: 2024/11/20 10:02:56 by kmotono          ###   ########.fr       */
+/*   Updated: 2024/11/20 10:24:32 by kmotono          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void		create_window(t_vars *vars);
 void		allocate_image_data(t_vars *vars);
 void		create_image(t_vars *vars);
 void		get_image_data_address(t_vars *vars);
+int			close_window(t_vars *vars);
 
 void		my_mlx_pixel_put(t_vars *vars, int i, int j, int color);
 void		draw_image(t_vars *vars);
