@@ -6,7 +6,7 @@
 /*   By: kmotono <kmotono@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 07:50:20 by kmotono           #+#    #+#             */
-/*   Updated: 2024/11/20 08:00:20 by kmotono          ###   ########.fr       */
+/*   Updated: 2024/11/20 10:00:38 by kmotono          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,16 @@ int	count_columns(char *line)
 void	calculate_dimensions(int fd, t_map *map)
 {
 	char	*line;
+	int		tmp;
 
 	map->height = 0;
-	map->width = 0;
+	map->width = INT_MAX;
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (map->height == 0)
-			map->width = count_columns(line);
+		tmp = count_columns(line);
+		if (tmp < map->width)
+			map->width = tmp;
 		map->height++;
 		free(line);
 		line = get_next_line(fd);

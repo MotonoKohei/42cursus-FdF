@@ -6,7 +6,7 @@
 /*   By: kmotono <kmotono@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:28:24 by kmotono           #+#    #+#             */
-/*   Updated: 2024/11/20 08:53:32 by kmotono          ###   ########.fr       */
+/*   Updated: 2024/11/20 10:02:56 by kmotono          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ typedef struct s_line_params
 	int		j;
 }			t_line_params;
 
+void		handle_error(const char *message);
+
 void		validate_input(int argc);
 void		initialize_mlx(t_vars *vars);
 void		initialize_vars(t_vars *vars, t_map *map, const char *filename);
@@ -144,5 +146,6 @@ int			ft_atoi(const char *str);
 char		**ft_split(const char *s, char c);
 char		*ft_strchr(const char *str, int c);
 int			ft_abs(int value);
+size_t		ft_strlen(const char *s);
 
 #endif

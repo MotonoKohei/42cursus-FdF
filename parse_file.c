@@ -6,7 +6,7 @@
 /*   By: kmotono <kmotono@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 07:54:48 by kmotono           #+#    #+#             */
-/*   Updated: 2024/11/20 07:56:43 by kmotono          ###   ########.fr       */
+/*   Updated: 2024/11/20 10:05:52 by kmotono          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,36 @@ void	parse_line_to_row(char *line, int *row, int width)
 
 	j = 0;
 	nums = ft_split(line, ' ');
-	while (nums[j])
+	while (nums[j] && j < width)
 	{
-		if (j >= width)
-		{
-			fprintf(stderr,
-				"Error: Line contains more columns than expected\n");
-			exit(EXIT_FAILURE);
-		}
 		row[j] = ft_atoi(nums[j]);
 		free(nums[j]);
 		j++;
 	}
 	if (j != width)
-	{
-		fprintf(stderr, "Error: Line contains fewer columns than expected\n");
-		exit(EXIT_FAILURE);
-	}
+		handle_error("Error: Line contains fewer columns than expected\n");
 	free(nums);
 }
+
+// void	parse_line_to_row(char *line, int *row, int width)
+// {
+// 	char	**nums;
+// 	int		j;
+
+// 	j = 0;
+// 	nums = ft_split(line, ' ');
+// 	while (nums[j])
+// 	{
+// 		if (j >= width)
+// 			handle_error("Error: Line contains more columns than expected\n");
+// 		row[j] = ft_atoi(nums[j]);
+// 		free(nums[j]);
+// 		j++;
+// 	}
+// 	if (j != width)
+// 		handle_error("Error: Line contains fewer columns than expected\n");
+// 	free(nums);
+// }
 
 void	parse_file(const char *filename, t_map *map)
 {
@@ -52,19 +63,13 @@ void	parse_file(const char *filename, t_map *map)
 	while (line)
 	{
 		if (i >= map->height)
-		{
-			fprintf(stderr, "Error: File contains more rows than expected\n");
-			exit(EXIT_FAILURE);
-		}
+			handle_error("Error: File contains more rows than expected\n");
 		parse_line_to_row(line, map->grid[i], map->width);
 		free(line);
 		i++;
 		line = get_next_line(fd);
 	}
 	if (i != map->height)
-	{
-		fprintf(stderr, "Error: File contains fewer rows than expected\n");
-		exit(EXIT_FAILURE);
-	}
+		handle_error("Error: File contains fewer rows than expected\n");
 	close(fd);
 }

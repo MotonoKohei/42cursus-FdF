@@ -6,21 +6,11 @@
 /*   By: kmotono <kmotono@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:32:29 by kmotono           #+#    #+#             */
-/*   Updated: 2024/11/19 21:32:30 by kmotono          ###   ########.fr       */
+/*   Updated: 2024/11/20 09:40:53 by kmotono          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}
 
 char	*ft_strdup(const char *s)
 {

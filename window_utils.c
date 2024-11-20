@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   window_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmotono <kmotono@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 08:14:38 by kmotono           #+#    #+#             */
-/*   Updated: 2024/11/20 08:23:24 by kmotono          ###   ########.fr       */
+/*   Updated: 2024/11/20 10:01:29 by kmotono          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-static void	handle_error(const char *message)
-{
-	write(1, message, strlen(message));
-	exit(EXIT_FAILURE);
-}
 
 void	create_window(t_vars *vars)
 {

@@ -6,7 +6,7 @@
 #    By: kmotono <kmotono@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/15 07:27:23 by kmotono           #+#    #+#              #
-#    Updated: 2024/11/20 08:53:09 by kmotono          ###   ########.fr        #
+#    Updated: 2024/11/20 10:02:21 by kmotono          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ LIBS				:= -L$(MLX_DIR) -lmlx -L$(LIBFT_DIR)
 SRC 				:= \
 	$(addprefix $(ROOT_DIR)/, \
 		fdf.c \
+		handle_error.c \
 		init.c \
 		initialize_window_and_image.c \
 		window_utils.c \
@@ -47,6 +48,7 @@ SRC 				:= \
 		ft_split.c \
 		ft_strchr.c \
 		ft_abs.c \
+		ft_strlen.c \
 	)
 
 OBJ					:= $(SRC:.c=.o)
