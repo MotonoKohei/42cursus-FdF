@@ -6,7 +6,7 @@
 #    By: kmotono <kmotono@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/15 07:27:23 by kmotono           #+#    #+#              #
-#    Updated: 2024/11/20 10:23:42 by kmotono          ###   ########.fr        #
+#    Updated: 2024/11/20 11:41:38 by kmotono          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,10 @@ FDF_H				:= fdf.h
 ROOT_DIR			:= .
 
 MLX_DIR				:= minilibx-linux
-MLX					:= $(MLX_DIR)/libmlx.a -L /usr/X11/lib -lX11 -lXext -lm
+MLX_LIB_PATH		:= $(MLX_DIR)/libmlx.a
+MLX_INCLUDE_PATH	:= -L /usr/X11/lib
+MLX_FLAGS			:= -lX11 -lXext -lm
+MLX_BUILT			:= $(MLX_DIR)/.mlx_built
 LIBS				:= -L$(MLX_DIR) -lmlx -L$(LIBFT_DIR)
 
 SRC 				:= \
@@ -60,14 +63,16 @@ all: $(NAME)
 
 bonus: all
 
-$(NAME): $(OBJ) $(MLX)
-	$(CC) $(CFLAGS) $(OBJ) $(MLX) -o $(NAME)
+$(NAME): $(OBJ) $(MLX_LIB_PATH)
+	$(CC) $(CFLAGS) $(OBJ) $(MLX_LIB_PATH) $(MLX_INCLUDE_PATH) $(MLX_FLAGS) -o $(NAME)
+	touch $(NAME)
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
 	rm -f $(OBJ)
+	rm -f $(MLX_BUILT)
 	make -C $(MLX_DIR) clean
 
 fclean: clean
@@ -75,8 +80,10 @@ fclean: clean
 
 re: fclean all
 
-$(MLX):
-	make -C $(MLX_DIR)
+$(MLX_LIB_PATH): $(MLX_BUILT)
 
-$(LIBFT):
-	make -C $(LIBFT_DIR)
+$(MLX_BUILT):
+	make -C $(MLX_DIR)
+	touch $(MLX_BUILT)
+
+.PHONY: all clean fclean re bonus $(MLX)
