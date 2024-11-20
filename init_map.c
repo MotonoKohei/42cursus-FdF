@@ -6,7 +6,7 @@
 /*   By: kmotono <kmotono@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 07:50:20 by kmotono           #+#    #+#             */
-/*   Updated: 2024/11/20 10:00:38 by kmotono          ###   ########.fr       */
+/*   Updated: 2024/11/20 11:55:18 by kmotono          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	allocate_grid(t_map *map)
 		if (!map->grid[i])
 		{
 			perror("Error allocating row memory");
+			free_map(map, i);
 			exit(EXIT_FAILURE);
 		}
 		i++;
