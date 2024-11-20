@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keypress.c                                         :+:      :+:    :+:   */
+/*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmotono <kmotono@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:01:16 by kmotono           #+#    #+#             */
-/*   Updated: 2024/11/20 07:44:07 by kmotono          ###   ########.fr       */
+/*   Updated: 2024/11/20 10:15:30 by kmotono          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	key_press_zoom(int keycode, t_vars *vars)
 	{
 		vars->scale += (int)(WIN_HEIGHT / vars->map->height / 10);
 		vars->height_scale += (int)(WIN_HEIGHT / vars->map->max_level / 40);
-		if (vars->scale == 0)
-			vars->scale = 1;
+		if ((int)(WIN_HEIGHT / vars->map->height / 10) == 0)
+			vars->scale += 1;
 		if (vars->height_scale == 0)
 			vars->height_scale = 1;
 		draw_image(vars);
@@ -30,8 +30,8 @@ int	key_press_zoom(int keycode, t_vars *vars)
 	{
 		vars->scale -= (int)(WIN_HEIGHT / vars->map->height / 10);
 		vars->height_scale -= (int)(WIN_HEIGHT / vars->map->max_level / 40);
-		if (vars->scale == 0)
-			vars->scale = 1;
+		if ((int)(WIN_HEIGHT / vars->map->height / 10) == 0)
+			vars->scale -= 1;
 		if (vars->height_scale == 0)
 			vars->height_scale = 1;
 		draw_image(vars);
@@ -57,6 +57,5 @@ int	key_press(int keycode, t_vars *vars)
 	}
 	key_press_zoom(keycode, vars);
 	key_press_translate(keycode, vars);
-	printf("keycode : %d\n", keycode);
 	return (0);
 }

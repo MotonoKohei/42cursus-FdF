@@ -6,7 +6,7 @@
 /*   By: kmotono <kmotono@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 08:09:10 by kmotono           #+#    #+#             */
-/*   Updated: 2024/11/20 08:09:33 by kmotono          ###   ########.fr       */
+/*   Updated: 2024/11/20 10:15:19 by kmotono          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,11 @@ void	initialize_vars(t_vars *vars, t_map *map, const char *filename)
 	vars->win_height = WIN_HEIGHT;
 	vars->win_width = WIN_WIDTH;
 	vars->scale = WIN_HEIGHT / vars->map->height / 2;
+	if (vars->scale == 0)
+		vars->scale = 1;
 	vars->height_scale = WIN_HEIGHT / vars->map->max_level / 8;
+	if (vars->height_scale == 0)
+		vars->height_scale = 1;
 	vars->angle_i = 0.525;
 	vars->angle_j = -0.625;
 	vars->angle_k = -0.6;
